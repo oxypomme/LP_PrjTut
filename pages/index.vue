@@ -8,7 +8,7 @@ export default {
   name: 'IndexPage',
   components: { ArticleList },
   head: () => ({
-    title: 'CIASIE Blog',
+    title: 'CIASIE - Blog',
   }),
 }
 </script>

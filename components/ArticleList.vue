@@ -1,45 +1,37 @@
 <template>
-  <div class="masonry sm:masonry-sm md:masonry-md">
-    <ArticleItem v-for="post in posts.data" :key="post.id" :post="post" />
+  <div>
+    <div class="text-7xl font-bold py-8 dark:text-white">Blog</div>
+    <div>
+      <ArticleItem featured :post="posts[0]" />
+    </div>
+    <div class="gap-8 pb-4 columns-1 sm:columns-2 md:columns-3 lg:columns-4">
+      <ArticleItem v-for="(post, i) in postsFromSecond" :key="i" :post="post" />
+    </div>
   </div>
 </template>
 
 <script>
 export default {
   data: () => ({
-    posts: {
-      data: [],
-    },
+    posts: [],
   }),
   async fetch() {
     try {
-      this.posts = await this.$axios.$get('/items/articles')
+      this.posts = (
+        await this.$axios.$get('/items/articles', {
+          params: {
+            sort: '-date_created',
+          },
+        })
+      ).data
     } catch (error) {
       this.posts = { data: [] }
     }
   },
+  computed: {
+    postsFromSecond() {
+      return this.posts.slice(1)
+    },
+  },
 }
 </script>
-
-<style lang="postcss" scoped>
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-@layer utilities {
-  @variants responsive {
-    .masonry {
-      column-gap: 1.5em;
-      column-count: 1;
-    }
-    .masonry-sm {
-      column-gap: 1.5em;
-      column-count: 2;
-    }
-    .masonry-md {
-      column-gap: 1.5em;
-      column-count: 3;
-    }
-  }
-}
-</style>
