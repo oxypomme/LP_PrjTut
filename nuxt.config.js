@@ -38,12 +38,28 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
+    '@nuxt/image',
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
     // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
-    baseURL: '/',
+    baseURL: `/`,
+  },
+
+  privateRuntimeConfig: {
+    axios: {
+      baseURL: `https://${process.env.API_URL}`,
+    },
+  },
+
+  // Image module configuration: https://image.nuxtjs.org/api/options
+  image: {
+    provider: 'static',
+    domains: [process.env.API_URL],
+    alias: {
+      api: `https://${process.env.API_URL}/`,
+    },
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
