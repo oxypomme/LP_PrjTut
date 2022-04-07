@@ -1,6 +1,11 @@
 <template>
   <div class="mt-5">
-    <ArticleDetail :post="post" />
+    <ArticleDetail v-if="post !== null" :post="post" />
+    <ErrorAlert
+      v-else
+      title="Content not found"
+      message="The content that you're asking for is unavailable."
+    />
   </div>
 </template>
 
@@ -21,14 +26,17 @@ export default {
       if (posts.length > 0) {
         this.post = posts[0]
       } else {
-        this.post = null
+        throw new Error('Content not found')
       }
     } catch (error) {
-      this.posts = { data: [] }
+      this.post = null
     }
   },
-  head: ({ $route }) => ({
-    title: 'CIASIE - ' + $route.params.slug,
-  }),
+  head() {
+    const name = this.post?.name ?? this.$route.params.slug
+    return {
+      title: 'CIASIE - ' + name,
+    }
+  },
 }
 </script>

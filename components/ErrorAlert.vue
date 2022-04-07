@@ -18,7 +18,9 @@
       <div>
         <p class="font-bold">{{ title }}</p>
         <p class="text-sm">{{ message }}</p>
-        <NuxtLink to="/">Return to home page</NuxtLink>
+        <p class="text-sm underline">
+          <NuxtLink to="/">Return to home page</NuxtLink>
+        </p>
       </div>
     </div>
   </div>
