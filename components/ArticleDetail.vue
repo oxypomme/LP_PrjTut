@@ -5,6 +5,7 @@
         v-if="post.media"
         :key="post.name"
         class="w-full"
+        style="transform: translateY(-50%)"
         :src="`/api/assets/${post.media}`"
       />
     </div>

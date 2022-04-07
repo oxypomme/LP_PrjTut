@@ -3,7 +3,7 @@
     v-if="post"
     :class="[
       featured && 'lg:flex',
-      'rounded overflow-hidden shadow-lg mb-4 break-inside-avoid bg-zinc-100 dark:bg-zinc-800',
+      'rounded overflow-hidden shadow-lg mb-4 break-inside-avoid bg-zinc-100 hover:bg-zinc-200 dark:bg-zinc-800 dark:hover:bg-zinc-700',
     ]"
   >
     <NuxtLink :to="'/' + post.slug">
