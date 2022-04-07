@@ -1,14 +1,14 @@
 <template>
   <nav class="border-gray-200 px-2 sm:px-4 py-2.5 bg-zinc-100 dark:bg-zinc-800">
     <div class="container flex flex-wrap justify-between items-center mx-auto">
-      <a href="#" class="flex items-center">
+      <NuxtLink to="/" class="flex items-center">
         <img src="/favicon.ico" class="mr-3 h-6 sm:h-10" alt="CIASIE Logo" />
         <span
           class="self-center text-xl font-semibold whitespace-nowrap dark:text-white"
         >
           CIASIE
         </span>
-      </a>
+      </NuxtLink>
       <button
         type="button"
         class="inline-flex items-center p-2 ml-3 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
